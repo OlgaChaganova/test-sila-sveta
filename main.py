@@ -4,7 +4,7 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 import torch
 import torch.nn as nn
-from utils import parse
+from utils import parse_training
 from model import get_model
 from train import train
 from evaluate import evaluate, get_classification_report, viz_mistakes
@@ -12,7 +12,7 @@ from data_preparing import ImagesDataset
 
 
 if __name__ == '__main__':
-    args = parse()
+    args = parse_training()
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
     # 0. data loading
@@ -56,5 +56,7 @@ if __name__ == '__main__':
 
     # 4. evaluating
     test_data = evaluate(model=model, test_dataframe=test_data, dataset=ImagesDataset, device=device)  # saving predictions
+    print('Predictions:')
+    print(test_data)
     get_classification_report(test_dataframe=test_data)  # calculating metrics
     viz_mistakes(test_dataframe=test_data)

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 
 def evaluate(model, test_dataframe, dataset, device):
+    model.eval()
     test_dataframe['predicted'] = None
     test_dataframe['probability'] = None
 
