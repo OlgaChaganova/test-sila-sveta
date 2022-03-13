@@ -12,7 +12,7 @@ To install all required dependencies, run:
 pip install -r requirements.txt
 ```
 
-To start an experiment, run:
+To start training, run:
 ```
 python main.py data_dir data_json_dir --num_layers --batch_size --num_epochs --lr
 ```
@@ -29,3 +29,9 @@ Hyperparameters can be customized, but you can use the following:
 - `batch_size` = 16
 - `num_epochs` = 8
 - `lr` = 5e-4
+
+To get predictions on the test dataset, run:
+```
+python predict.py data_dir data_json_dir path_to_model
+```
+where `path_to_model` is the path to already trained model (trained-densenet.tr).
